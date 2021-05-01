@@ -43,6 +43,6 @@ jobs:
           # Path to the Dockerfile 
           file: ./src/Dockerfile
           push: true
-          tags:
+          tags: |
             rlrobs2/api-bootcamp-produto:latest
             rlrobs2/api-bootcamp-produto:${{github.run_number}}
