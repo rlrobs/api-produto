@@ -40,11 +40,9 @@ jobs:
         with:
         # Build's context is the set of files located in the specified PATH or URL
           context: ./src
-          # Path to the Dockerfile
+          # Path to the Dockerfile 
           file: ./src/Dockerfile
           push: true
           tags:
             rlrobs2/api-bootcamp-produto:latest
             rlrobs2/api-bootcamp-produto:${{github.run_number}}
-            
-      
