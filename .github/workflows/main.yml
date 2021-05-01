@@ -46,3 +46,38 @@ jobs:
           tags: |
             rlrobs2/api-bootcamp-produto:latest
             rlrobs2/api-bootcamp-produto:${{github.run_number}}
+  CD:
+    runs-on: ubuntu-latest
+    # o job CI e CD serao executados em paralelo. Necessário incluir o needs: [CI] para q nao seja paralelo.
+    needs: [CI]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Kubernetes set context
+        uses: Azure/k8s-set-context@v1
+        with:
+          # Acceptable values: kubeconfig or service-account
+          method: kubeconfig
+          # Kubernetes Config em fonrma de secret
+          kubeconfig: ${{secrets.K8S_CONFIG}}
+          
+      - name: Deploy mongodb
+        uses: Azure/k8s-deploy@v1.3
+        with:
+          manifests: |
+            k8s/mongodb/deployment.yaml
+            k8s/mongodb/service.yaml
+
+      
+    
+      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
